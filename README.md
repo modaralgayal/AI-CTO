@@ -5,6 +5,7 @@
 ## Description
 This project focuses on developing a web-based tool that provides a comprehensive and visually appealing view of the company's AI features, projects, and project ideas. The tool enables decision-makers to strategically evaluate and prioritize projects using visual analytics. 
 
+
 ### Key Features:
 - **Visual Analytics:** Projects are visualized on a two-dimensional axis:
   - **Y-axis:** Customer-perceived novelty value.
