@@ -10,4 +10,4 @@ This project focuses on developing a web-based tool that provides a comprehensiv
   - **Y-axis:** Customer-perceived novelty value.
   - **X-axis:** Business model and service delivery novelty value.
 - **Modular Design:** Ensures flexibility for future extensions and integration of additional backend components.
-- **AI-Enhanced Backend:** Optionally leverages the latest AI technologies, such as large language models, to enhance project evaluation capabilities.
+- **AI-Enhanced Backend:** Optionally leverages the latest AI technologies, such as large language models, to enhance project evaluation capabilities.  
