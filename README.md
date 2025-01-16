@@ -1,4 +1,2 @@
 # AI-CTO
 
-* Initial Commit
-
