@@ -1,6 +1,7 @@
 # AI-CTO
 
 # AI Project Portfolio Visualization Tool
+![GHA workflow badge](https://github.com/modaralgayal/AI-CTO/workflows/CI/badge.svg)
 
 ## Description
 This project focuses on developing a web-based tool that provides a comprehensive and visually appealing view of the company's AI features, projects, and project ideas. The tool enables decision-makers to strategically evaluate and prioritize projects using visual analytics. 
@@ -21,7 +22,7 @@ This project focuses on developing a web-based tool that provides a comprehensiv
 
 - [Hour accounting](https://docs.google.com/spreadsheets/d/1TU4pviN2y0U6E9rLPYMDoz6TYgi0V0dnNJn4ZTuhK0A/edit?gid=472807538#gid=472807538)
 
-# Defenition of Done:
+# Definition of Done:
 
 ## User Story Implementation
 - The **user story** and its **acceptance criteria** have been fully implemented and meet the agreed requirements.
