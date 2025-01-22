@@ -29,7 +29,7 @@ def quote_of_the_day():
         messages=[
             {
                 "role": "user",
-                "content": "Say this is a test",
+                "content": "Give me an inspirational quote of the day",
             }
         ],
         model="gpt-3.5-turbo",
