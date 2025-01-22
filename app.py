@@ -42,55 +42,99 @@ def quote_of_the_day():
 
 @app.route("/add_user", methods=["POST"])
 def add_user():
-    data = request.get_json()
+    try:
+        data = request.get_json()
 
-    if not data.get("role") or not data.get("name") or not data.get("email"):
-        return jsonify({"error": "Missing required fields"}), 400
+        if not data.get("role") or not data.get("name") or not data.get("email"):
+            return jsonify({"error": "Missing required fields"}), 400
 
-    new_user = User(role=data["role"], name=data["name"], email=data["email"])
+        new_user = User(role=data["role"], name=data["name"], email=data["email"])
 
-    db.session.add(new_user)
-    db.session.commit()
+        db.session.add(new_user)
+        db.session.commit()
 
-    return (
-        jsonify({"message": "User added successfully!", "user": new_user.to_dict()}),
-        201,
-    )
+        return (
+            jsonify(
+                {"message": "User added successfully!", "user": new_user.to_dict()}
+            ),
+            201,
+        )
+    except Exception as e:
+        return (
+            jsonify(
+                {"error": "An error occurred while adding the user.", "details": str(e)}
+            ),
+            500,
+        )
 
 
 @app.route("/add_project", methods=["POST"])
 def add_project():
-    data = request.get_json()
+    try:
+        data = request.get_json()
 
-    required_fields = [
-        "description",
-        "returned_x_value",
-        "returned_y_value",
-        "x_value_justification",
-        "y_value_justification",
-        "type",
-    ]
+        required_fields = [
+            "description",
+            "returned_x_value",
+            "returned_y_value",
+            "x_value_justification",
+            "y_value_justification",
+            "type",
+        ]
 
-    if not all(field in data for field in required_fields):
-        return jsonify({"error": "Missing required fields"}), 400
+        if not all(field in data for field in required_fields):
+            return jsonify({"error": "Missing required fields"}), 400
 
-    new_project = Project(
-        description=data["description"],
-        returned_x_value=data["returned_x_value"],
-        returned_y_value=data["returned_y_value"],
-        x_value_justification=data["x_value_justification"],
-        y_value_justification=data["y_value_justification"],
-        type=data["type"],
-    )
+        new_project = Project(
+            description=data["description"],
+            returned_x_value=data["returned_x_value"],
+            returned_y_value=data["returned_y_value"],
+            x_value_justification=data["x_value_justification"],
+            y_value_justification=data["y_value_justification"],
+            type=data["type"],
+        )
 
-    db.session.add(new_project)
-    db.session.commit()
-    return (
-        jsonify(
-            {"message": "Project added successfully!", "project": new_project.to_dict()}
-        ),
-        201,
-    )
+        db.session.add(new_project)
+        db.session.commit()
+
+        return (
+            jsonify(
+                {
+                    "message": "Project added successfully!",
+                    "project": new_project.to_dict(),
+                }
+            ),
+            201,
+        )
+    except Exception as e:
+        return (
+            jsonify(
+                {
+                    "error": "An error occurred while adding the project.",
+                    "details": str(e),
+                }
+            ),
+            500,
+        )
+
+
+@app.route("/get_projects", methods=["GET"])
+def get_projects():
+    try:
+        projects = Project.query.all()
+        projects_list = [project.to_dict() for project in projects]
+        return jsonify({"projects": projects_list}), 200
+
+    except Exception as e:
+        return (
+            jsonify(
+                {
+                    "error": "An error occurred while fetching projects.",
+                    "details": str(e),
+                }
+            ),
+            500,
+        )
 
 
 if __name__ == "__main__":
