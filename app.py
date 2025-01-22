@@ -53,12 +53,12 @@ def add_user():
     db.session.commit()
 
     return (
-        jsonify({"message": "User added successfully!", "user": new_user.to_dict}),
+        jsonify({"message": "User added successfully!", "user": new_user.to_dict()}),
         201,
     )
 
 
-@app.route("/add_porject", methods=["POST"])
+@app.route("/add_project", methods=["POST"])
 def add_project():
     data = request.get_json()
 
