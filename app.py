@@ -3,6 +3,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request
 from openai import OpenAI
+from bokeh_visualization import create_scatter_plot
 
 from backend.backend import Project, User, db, init_app
 
@@ -136,6 +137,10 @@ def get_projects():
             500,
         )
 
+@app.route("/visualize")
+def visualize():
+    script, div = create_scatter_plot()
+    return render_template("visualization.html", script=script, div=div)
 
 if __name__ == "__main__":
     app.run(debug=True)

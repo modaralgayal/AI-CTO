@@ -4,19 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Project Tool</title>
+
+    <link rel="stylesheet" href="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.0.min.css" type="text/css" />
+
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.0.0.min.js"></script>
+    
     <link rel="stylesheet" href="/static/styles.css">
+    
+
+    {{ script|safe }}  
 </head>
 <body>
     <header>
         <h1>AI Project Portfolio Visualization Tool</h1>
     </header>
     <main>
-        <p>Welcome to the AI Project Portfolio Visualization Tool. Start exploring and evaluating AI projects here.</p>
-        
+        <h2>Visualization</h2>
 
-        <a href="/visualize" class="button">View Visualization</a>
+        {{ div|safe }}  <!-- Embed Bokeh div -->
     </main>
-    <footer>
-    </footer>
+    <footer></footer>
 </body>
 </html>
