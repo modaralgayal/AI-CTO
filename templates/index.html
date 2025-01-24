@@ -12,6 +12,12 @@
     </header>
     <main>
         <p>Welcome to the AI Project Portfolio Visualization Tool. Start exploring and evaluating AI projects here.</p>
+
+        <form id="addProjectForm" action="/add_project" method="POST">
+            <label for="description">Enter your project idea here:</label>
+            <input type="text" id="description" name="description" placeholder="Enter some text" required style="margin-bottom: 20px;">
+            <button type="submit" class="button">Submit</button>
+        </form>
         
 
         <a href="/visualize" class="button">View Visualization</a>
