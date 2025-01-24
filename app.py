@@ -34,10 +34,10 @@ def quote_of_the_day():
                 "content": "Give me an inspirational quote of the day",
             }
         ],
-        model="gpt-3.5-turbo",
+        model="chatgpt-4o-latest",
     )
 
-    return chat_completion.choices[0].message.content.strip()
+    return jsonify({"quote": chat_completion.choices[0].message.content.strip()})
 
 
 @app.route("/add_user", methods=["POST"])
