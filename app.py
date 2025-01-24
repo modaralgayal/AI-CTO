@@ -143,6 +143,10 @@ def visualize():
     script, div = create_scatter_plot()
     return render_template("visualization.html", script=script, div=div)
 
+@app.route("/previous_projects")
+def previous_projects():
+    return render_template("previous_projects.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
