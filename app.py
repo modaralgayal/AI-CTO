@@ -3,9 +3,9 @@ import os
 from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request
 from openai import OpenAI
-from bokeh_visualization import create_scatter_plot
 
 from backend.backend import Project, User, db, init_app
+from bokeh_visualization import create_scatter_plot
 
 load_dotenv()
 client = OpenAI(
@@ -35,10 +35,10 @@ def quote_of_the_day():
                 "content": "Give me an inspirational quote of the day",
             }
         ],
-        model="gpt-3.5-turbo",
+        model="chatgpt-4o-latest",
     )
 
-    return chat_completion.choices[0].message.content.strip()
+    return jsonify({"quote": chat_completion.choices[0].message.content.strip()})
 
 
 @app.route("/add_user", methods=["POST"])
@@ -137,10 +137,12 @@ def get_projects():
             500,
         )
 
+
 @app.route("/visualize")
 def visualize():
     script, div = create_scatter_plot()
     return render_template("visualization.html", script=script, div=div)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
