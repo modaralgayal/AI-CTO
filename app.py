@@ -5,6 +5,7 @@ from flask import Flask, jsonify, render_template, request
 from openai import OpenAI
 
 from backend.backend import Project, User, db, init_app
+from bokeh_visualization import create_scatter_plot
 
 load_dotenv()
 client = OpenAI(
@@ -135,6 +136,12 @@ def get_projects():
             ),
             500,
         )
+
+
+@app.route("/visualize")
+def visualize():
+    script, div = create_scatter_plot()
+    return render_template("visualization.html", script=script, div=div)
 
 
 if __name__ == "__main__":
