@@ -1,4 +1,5 @@
 import os
+import json
 
 from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request
@@ -11,7 +12,8 @@ load_dotenv()
 client = OpenAI(
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
-
+with open("prompt.txt", "r") as file:
+    instruction_prompt = file.read().strip()
 app = Flask(__name__)
 init_app(app)
 
@@ -20,7 +22,47 @@ init_app(app)
 def index():
     return render_template("index.html")
 
+@app.route("/process_project", methods=["POST"])
+def process_project():
+    try:
+        description = request.form.get("description")  
+        if not description:
+            return jsonify({"error": "Missing required fields"}), 400
+        
+        response = client.chat.completions.create(
+            messages=[
+                {
+                    "role": "system",
+                    "content": instruction_prompt,
+                },
+                {
+                    "role": "user",
+                    "content": description,
+                },
 
+            ],
+            #model="chatgpt-4o-latest",
+            model = "gpt-3.5-turbo-1106",
+            response_format={"type": "json_object"},
+        )
+        
+        response_data = response.choices[0].message.content
+        response_json = json.loads(response_data)
+
+        # Extract data from the response JSON
+        project_name = response_json["project_name"]
+        business_novelty = int(response_json["business_novelty"])
+        customer_novelty = int(response_json["customer_novelty"])
+        impact = int(response_json["impact"])
+        business_rationale = response_json["rationale_behind_business_novelty"]
+        customer_rationale = response_json["rationale_behind_customer_novelty"]
+        impact_rationale = response_json["rationale_behind_impact"]
+
+        return render_template("index.html", project_name=project_name, business_novelty=business_novelty, customer_novelty=customer_novelty, impact=impact, business_rationale=business_rationale, customer_rationale=customer_rationale, impact_rationale=impact_rationale)
+    
+    except Exception as e:
+        return jsonify({"error": "An error occurred while processing the project.", "details": str(e)}), 500
+           
 @app.route("/quote")
 def quote_page():
     return render_template("quote.html")
