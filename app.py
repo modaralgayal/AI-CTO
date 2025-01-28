@@ -180,6 +180,32 @@ def get_projects():
         )
 
 
+@app.route("/delete_project/<int:project_id>", methods=["DELETE"])
+def delete_project(project_id):
+    try:
+        project = Project.query.get(project_id)
+
+        if not project:
+            return jsonify({"error": "Project not found"}), 404
+
+        db.session.delete(project)
+        db.session.commit()
+
+        return jsonify({"message":"Project deleted successfully"}), 200
+
+    except Exception as e:
+        return (
+            jsonify(
+                {
+                    "error": "An error occurred while deleting the project.",
+                    "details": str(e)
+                }
+            ),
+            500
+        )
+
+
+
 @app.route("/visualize")
 def visualize():
     script, div = create_scatter_plot()
