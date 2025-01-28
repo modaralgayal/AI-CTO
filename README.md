@@ -20,6 +20,8 @@ This project focuses on developing a web-based tool that provides a comprehensiv
 
 - [Sprint Backlog](https://github.com/users/ErikHuuskonen/projects/1)
 
+- [Documentation](/Documentation.md)
+
 
 # Definition of Done:
 
