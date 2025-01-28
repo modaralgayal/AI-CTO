@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Project Tool</title>
     <link rel="stylesheet" href="/static/styles.css">
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.3.3.min.js"></script>
 </head>
 <body>
     <header>
@@ -12,9 +13,27 @@
     </header>
     <main>
         <p>Welcome to the AI Project Portfolio Visualization Tool. Start exploring and evaluating AI projects here.</p>
-        
+
+        <form action="/process_project" method="post">
+            <label for="description">Enter your project idea here:</label>
+            <input type="text" id="description" name="description" placeholder="Enter some text" required style="margin-bottom: 20px;">
+            <button type="submit" class="button">Submit</button>
+        </form>
+            
+        {% if project_name and business_novelty and customer_novelty and impact %}
+        <p>Project Name: {{ project_name }}</p>
+        <p>Business Novelty: {{ business_novelty }}</p>
+        <p>Customer Novelty: {{ customer_novelty }}</p>
+        <p>Impact: {{ impact }}</p>
+        <p>Rationale for business novelty: {{ business_rationale }}</p>
+        <p>Rationale for customer novelty: {{ customer_rationale }}</p>
+        <p>Rationale for impact: {{ impact_rationale }}</p>
+        {% else %}
+            <p>No project data available.</p>
+        {% endif %}
 
         <a href="/visualize" class="button">View Visualization</a>
+        <a href="/previous_projects" class="button">Previous Projects</a>
     </main>
     <footer>
     </footer>
