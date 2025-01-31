@@ -92,13 +92,3 @@ class Project(db.Model):
             "type": self.type,
         }
 
-
-def init_app(app):
-    database_url = os.environ.get("SQLALCHEMY_DATABASE_URI", "sqlite:///default.db")
-    app.config["SQLALCHEMY_DATABASE_URI"] = database_url
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    db.init_app(app)
-    print("THe app is running")
-
-    with app.app_context():
-        db.create_all()
