@@ -1,7 +1,8 @@
 from flask import jsonify, render_template, request
-from services.openai_service import get_openai_completion
-from models import db, User, Project
+
 from bokeh_visualization import create_scatter_plot
+from models import Project, User, db
+from services.openai_service import get_openai_completion
 
 
 def setup_routes(app):
@@ -17,7 +18,39 @@ def setup_routes(app):
                 return jsonify({"error": "Missing required fields"}), 400
 
             response_json = get_openai_completion(description)
-            return render_template("index.html", **response_json)
+            project_name = response_json["project_name"]
+            business_novelty = int(response_json["business_novelty"])
+            customer_novelty = int(response_json["customer_novelty"])
+            impact = int(response_json["impact"])
+            business_rationale = response_json["rationale_behind_business_novelty"]
+            customer_rationale = response_json["rationale_behind_customer_novelty"]
+            impact_rationale = response_json["rationale_behind_impact"]
+
+            new_project = Project(
+                description=project_name,
+                returned_x_value=business_novelty,
+                returned_y_value=customer_novelty,
+                x_value_justification=business_rationale,
+                y_value_justification=customer_rationale,
+                type="idea",
+            )
+
+            print(new_project)
+
+            db.session.add(new_project)
+            db.session.commit()
+            print(f"Added new project: {new_project.id}, {new_project.description}")
+
+            return render_template(
+                "index.html",
+                project_name=project_name,
+                business_novelty=business_novelty,
+                customer_novelty=customer_novelty,
+                impact=impact,
+                business_rationale=business_rationale,
+                customer_rationale=customer_rationale,
+                impact_rationale=impact_rationale,
+            )
 
         except Exception as e:
             return jsonify({"error": "An error occurred", "details": str(e)}), 500
@@ -47,9 +80,15 @@ def setup_routes(app):
         try:
             data = request.get_json()
             new_project = Project(**data)
+            print(new_project)
             db.session.add(new_project)
             db.session.commit()
-            return jsonify({"message": "Project added!", "project": new_project.to_dict()}), 201
+            return (
+                jsonify(
+                    {"message": "Project added!", "project": new_project.to_dict()}
+                ),
+                201,
+            )
         except Exception as e:
             return jsonify({"error": "Failed to add project", "details": str(e)}), 500
 
@@ -59,7 +98,10 @@ def setup_routes(app):
             projects = Project.query.all()
             return jsonify({"projects": [p.to_dict() for p in projects]}), 200
         except Exception as e:
-            return jsonify({"error": "Failed to fetch projects", "details": str(e)}), 500
+            return (
+                jsonify({"error": "Failed to fetch projects", "details": str(e)}),
+                500,
+            )
 
     @app.route("/delete_project/<int:project_id>", methods=["DELETE"])
     def delete_project(project_id):
@@ -72,7 +114,10 @@ def setup_routes(app):
             db.session.commit()
             return jsonify({"message": "Project deleted!"}), 200
         except Exception as e:
-            return jsonify({"error": "Failed to delete project", "details": str(e)}), 500
+            return (
+                jsonify({"error": "Failed to delete project", "details": str(e)}),
+                500,
+            )
 
     @app.route("/visualize")
     def visualize():
