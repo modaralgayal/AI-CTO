@@ -2,9 +2,14 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - release
+      - cache
   pull_request:
-    branches: [main]
+    branches:
+      - main
+      - cache
 
 jobs:
   build:
@@ -20,6 +25,46 @@ jobs:
         run: pip install poetry
       - name: Install dependencies
         run: poetry install
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/cache'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install Poetry
+        run: pip install poetry
+      - name: Install dependencies
+        run: poetry install
       - name: Run Robot Framework tests
-        run: poetry run robot tests/robot
+        run: ./run_tests.sh
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/release'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install Poetry
+        run: pip install poetry
+      - name: Install dependencies
+        run: poetry install
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release ${{ github.run_number }}
+          draft: false
+          prerelease: false
     
