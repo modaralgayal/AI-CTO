@@ -1,7 +1,7 @@
 __pycache__/
 .env
 instance/
-.png
+*.png
 *.DS_Store
 report.html
 log.html
