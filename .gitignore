@@ -1,4 +1,10 @@
 __pycache__/
 .env
 instance/
-
+.png
+*.DS_Store
+report.html
+log.html
+output.xml
+*.coverage
+*.log
