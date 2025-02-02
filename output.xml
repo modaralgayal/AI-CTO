@@ -1,85 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2 (Python 3.11.2 on darwin)" generated="2025-02-02T14:45:11.826154" rpa="false" schemaversion="5">
+<robot generator="Robot 7.2 (Python 3.11.2 on darwin)" generated="2025-02-02T14:52:08.982244" rpa="false" schemaversion="5">
 <suite id="s1" name="Tests" source="/Users/erikstandard/Desktop/AI-CTO/tests">
 <suite id="s1-s1" name="Robot" source="/Users/erikstandard/Desktop/AI-CTO/tests/robot">
 <suite id="s1-s1-s1" name="Pages" source="/Users/erikstandard/Desktop/AI-CTO/tests/robot/pages.robot">
 <test id="s1-s1-s1-t1" name="Testaa Etusivu" line="5">
 <kw name="Open And Configure Browser" owner="resource">
 <kw name="Get Chrome Driver" owner="webdriver_manager_keywords">
-<msg time="2025-02-02T14:45:11.969902" level="INFO">====== WebDriver manager ======</msg>
-<msg time="2025-02-02T14:45:12.531319" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
-<msg time="2025-02-02T14:45:12.764856" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
-<msg time="2025-02-02T14:45:12.900417" level="INFO">Driver [/Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver] found in cache</msg>
-<msg time="2025-02-02T14:45:12.900641" level="INFO">${driver_path} = /Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver</msg>
+<msg time="2025-02-02T14:52:09.117288" level="INFO">====== WebDriver manager ======</msg>
+<msg time="2025-02-02T14:52:09.309549" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
+<msg time="2025-02-02T14:52:09.475405" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
+<msg time="2025-02-02T14:52:09.585539" level="INFO">Driver [/Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver] found in cache</msg>
+<msg time="2025-02-02T14:52:09.585746" level="INFO">${driver_path} = /Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver</msg>
 <var>${driver_path}</var>
-<status status="PASS" start="2025-02-02T14:45:11.969805" elapsed="0.930864"/>
+<status status="PASS" start="2025-02-02T14:52:09.117194" elapsed="0.468579"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-02T14:45:12.901011" level="INFO">Using ChromeDriver at /Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver</msg>
+<msg time="2025-02-02T14:52:09.586145" level="INFO">Using ChromeDriver at /Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver</msg>
 <arg>Using ChromeDriver at ${driver_path}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-02T14:45:12.900860" elapsed="0.000173"/>
+<status status="PASS" start="2025-02-02T14:52:09.585977" elapsed="0.000192"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-02-02T14:45:12.901299" level="WARN">exexcutable_path is being deprecated. Please use service to configure the driver's executable_path as per documentation.</msg>
-<msg time="2025-02-02T14:45:12.901380" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000'.</msg>
+<msg time="2025-02-02T14:52:09.586423" level="WARN">exexcutable_path is being deprecated. Please use service to configure the driver's executable_path as per documentation.</msg>
+<msg time="2025-02-02T14:52:09.586499" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000'.</msg>
 <arg>${HOME_URL}</arg>
 <arg>${BROWSER}</arg>
 <arg>executable_path=${driver_path}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-02-02T14:45:12.901123" elapsed="2.026563"/>
+<status status="PASS" start="2025-02-02T14:52:09.586251" elapsed="1.751395"/>
 </kw>
-<status status="PASS" start="2025-02-02T14:45:11.969467" elapsed="2.959248"/>
+<status status="PASS" start="2025-02-02T14:52:09.116863" elapsed="2.222440"/>
 </kw>
-<status status="PASS" start="2025-02-02T14:45:11.969188" elapsed="2.960294"/>
+<status status="PASS" start="2025-02-02T14:52:09.116602" elapsed="2.224394"/>
 </test>
 <test id="s1-s1-s1-t2" name="User can see main page" line="9">
 <kw name="Open And Configure Browser" owner="resource">
 <kw name="Get Chrome Driver" owner="webdriver_manager_keywords">
-<msg time="2025-02-02T14:45:14.930976" level="INFO">====== WebDriver manager ======</msg>
-<msg time="2025-02-02T14:45:15.119984" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
-<msg time="2025-02-02T14:45:15.262266" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
-<msg time="2025-02-02T14:45:15.398118" level="INFO">Driver [/Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver] found in cache</msg>
-<msg time="2025-02-02T14:45:15.398575" level="INFO">${driver_path} = /Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver</msg>
+<msg time="2025-02-02T14:52:11.343125" level="INFO">====== WebDriver manager ======</msg>
+<msg time="2025-02-02T14:52:11.524791" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
+<msg time="2025-02-02T14:52:11.650291" level="INFO">Get LATEST chromedriver version for google-chrome</msg>
+<msg time="2025-02-02T14:52:11.755903" level="INFO">Driver [/Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver] found in cache</msg>
+<msg time="2025-02-02T14:52:11.756685" level="INFO">${driver_path} = /Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver</msg>
 <var>${driver_path}</var>
-<status status="PASS" start="2025-02-02T14:45:14.930735" elapsed="0.467895"/>
+<status status="PASS" start="2025-02-02T14:52:11.342844" elapsed="0.413927"/>
 </kw>
 <kw name="Log" owner="BuiltIn">
-<msg time="2025-02-02T14:45:15.399558" level="INFO">Using ChromeDriver at /Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver</msg>
+<msg time="2025-02-02T14:52:11.758316" level="INFO">Using ChromeDriver at /Users/erikstandard/.wdm/drivers/chromedriver/mac64/132.0.6834.159/chromedriver-mac-arm64/chromedriver</msg>
 <arg>Using ChromeDriver at ${driver_path}</arg>
 <doc>Logs the given message with the given level.</doc>
-<status status="PASS" start="2025-02-02T14:45:15.399100" elapsed="0.000515"/>
+<status status="PASS" start="2025-02-02T14:52:11.757568" elapsed="0.000827"/>
 </kw>
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-02-02T14:45:15.400335" level="WARN">exexcutable_path is being deprecated. Please use service to configure the driver's executable_path as per documentation.</msg>
-<msg time="2025-02-02T14:45:15.400505" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000'.</msg>
+<msg time="2025-02-02T14:52:11.759403" level="WARN">exexcutable_path is being deprecated. Please use service to configure the driver's executable_path as per documentation.</msg>
+<msg time="2025-02-02T14:52:11.759663" level="INFO">Opening browser 'chrome' to base url 'http://127.0.0.1:5000'.</msg>
 <arg>${HOME_URL}</arg>
 <arg>${BROWSER}</arg>
 <arg>executable_path=${driver_path}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-02-02T14:45:15.399840" elapsed="1.207975"/>
+<status status="PASS" start="2025-02-02T14:52:11.758680" elapsed="1.163571"/>
 </kw>
-<status status="PASS" start="2025-02-02T14:45:14.930461" elapsed="1.677617"/>
+<status status="PASS" start="2025-02-02T14:52:11.342564" elapsed="1.583704"/>
 </kw>
 <kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-02-02T14:45:16.608898" level="INFO">Opening url 'http://127.0.0.1:5000'</msg>
+<msg time="2025-02-02T14:52:12.927164" level="INFO">Opening url 'http://127.0.0.1:5000'</msg>
 <arg>${HOME_URL}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-02-02T14:45:16.608628" elapsed="0.038334"/>
+<status status="PASS" start="2025-02-02T14:52:12.926864" elapsed="0.028697"/>
 </kw>
 <kw name="Page Should Contain" owner="SeleniumLibrary">
-<msg time="2025-02-02T14:45:16.659632" level="INFO">Current page contains text 'AI Project Portfolio Visualization Tool'.</msg>
+<msg time="2025-02-02T14:52:12.969298" level="INFO">Current page contains text 'AI Project Portfolio Visualization Tool'.</msg>
 <arg>AI Project Portfolio Visualization Tool</arg>
 <doc>Verifies that current page contains ``text``.</doc>
-<status status="PASS" start="2025-02-02T14:45:16.647121" elapsed="0.012565"/>
+<status status="PASS" start="2025-02-02T14:52:12.956589" elapsed="0.012765"/>
 </kw>
-<status status="PASS" start="2025-02-02T14:45:14.929887" elapsed="1.729958"/>
+<status status="PASS" start="2025-02-02T14:52:11.341770" elapsed="1.627733"/>
 </test>
-<status status="PASS" start="2025-02-02T14:45:11.836882" elapsed="4.823271"/>
+<status status="PASS" start="2025-02-02T14:52:08.992893" elapsed="3.976873"/>
 </suite>
-<status status="PASS" start="2025-02-02T14:45:11.836486" elapsed="4.824261"/>
+<status status="PASS" start="2025-02-02T14:52:08.992511" elapsed="3.977558"/>
 </suite>
-<status status="PASS" start="2025-02-02T14:45:11.826969" elapsed="4.834080"/>
+<status status="PASS" start="2025-02-02T14:52:08.983043" elapsed="3.987179"/>
 </suite>
 <statistics>
 <total>
@@ -94,7 +94,7 @@
 </suite>
 </statistics>
 <errors>
-<msg time="2025-02-02T14:45:12.901299" level="WARN">exexcutable_path is being deprecated. Please use service to configure the driver's executable_path as per documentation.</msg>
-<msg time="2025-02-02T14:45:15.400335" level="WARN">exexcutable_path is being deprecated. Please use service to configure the driver's executable_path as per documentation.</msg>
+<msg time="2025-02-02T14:52:09.586423" level="WARN">exexcutable_path is being deprecated. Please use service to configure the driver's executable_path as per documentation.</msg>
+<msg time="2025-02-02T14:52:11.759403" level="WARN">exexcutable_path is being deprecated. Please use service to configure the driver's executable_path as per documentation.</msg>
 </errors>
 </robot>
