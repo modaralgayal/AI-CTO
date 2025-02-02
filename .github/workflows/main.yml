@@ -50,5 +50,3 @@ jobs:
           body: "Automated release created from release branch."
           draft: false
           prerelease: false
-
-
