@@ -13,6 +13,8 @@ python-dotenv = "^1.0.1"
 openai = "^1.59.9"
 flask-sqlalchemy = "^3.1.1"
 bokeh = "^3.6.2"
+robotframework = "^7.2"
+webdrivermanager = "^0.10.0"
 
 
 [build-system]
