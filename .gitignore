@@ -1,4 +1,7 @@
 __pycache__/
 .env
 instance/
+*.png
+*.log
+venv
 
