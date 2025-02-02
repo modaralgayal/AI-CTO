@@ -8,3 +8,4 @@ log.html
 output.xml
 *.coverage
 *.log
+venv
