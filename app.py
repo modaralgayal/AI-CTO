@@ -15,7 +15,7 @@ def create_app():
 
     init_db(app) 
     setup_routes(app) 
-
+    
     return app
 
 if __name__ == "__main__":

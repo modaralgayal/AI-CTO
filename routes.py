@@ -121,8 +121,27 @@ def setup_routes(app):
 
     @app.route("/visualize")
     def visualize():
-        script, div = create_scatter_plot()
-        return render_template("visualization.html", script=script, div=div)
+
+        try:
+            projects = Project.query.all()
+            
+            project_names = [project.description for project in projects]
+            business_novelty = [project.returned_x_value for project in projects]
+            customer_novelty = [project.returned_y_value for project in projects]
+            impact = [30 for project in projects]
+
+            data = {
+                "projects": project_names,
+                "business_novelty": business_novelty,
+                "customer_novelty": customer_novelty,
+                "impact": impact
+            }
+        
+            script, div = create_scatter_plot(data)
+            return render_template("visualization.html", script=script, div=div)
+        
+        except Exception as e:
+            return jsonify({"error": "An error occurred while fetching data for visualization", "details": str(e)}), 500
 
     @app.route("/previous_projects")
     def previous_projects():
